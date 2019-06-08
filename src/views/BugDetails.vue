@@ -1,13 +1,15 @@
 <template>
-  <div class="row bug-details text-white">
+  <div class="row bug-details">
     <div class="col-12 mt-5">
-      <h1>Bug Details</h1>
+      <h1 class="text-white">Bug Details</h1>
     </div>
     <div class="col-12 mt-5">
       <div class="card text-center">
         <!-- v bind inputs  -->
-        <div class="card-header">{{bug.creator}}</div>
-        <div class="card-body">
+        <td class="card-header" v-if="bug.closed == false">Active <i class="fas fa-book-open"></i></td>
+        <td class="card-header" v-else-if="bug.closed == true">Closed <i class="far fa-times-circle"></i></td>
+        <div class="card-header">@{{bug.creator}}</div>
+        <div class="card-body" id="bug-card">
           <h5 class="card-title">{{bug.title}}</h5>
           <p class="card-text">{{bug.description}}</p>
           <button class="btn btn-danger m-2">Close Bug</button>
@@ -56,7 +58,7 @@
 
       }
     },
-    showEditForm() {
+    createNote() {
 
     }
 
@@ -67,6 +69,7 @@
 
 
 <style>
-
-
+  /* #bug-card {
+    background-color: rgba(255, 255, 255, 0.5);
+  } */
 </style>
