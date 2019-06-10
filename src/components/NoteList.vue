@@ -58,7 +58,7 @@
         this.$store.dispatch('deleteNote', id)
       },
       editNote(note) {
-
+        this.$store.dispatch('editNote', id)
       }
     }
   }
