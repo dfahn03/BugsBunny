@@ -25,9 +25,9 @@
           <td>
             {{new Date(note.updatedAt).toLocaleDateString('en-US', {year: 'numeric', day: 'numeric', month: 'short'})}}
           </td>
-          <td class="d-flex">
-            <button class="btn btn-success btn-small" @click="editNote">Completed</button>
-            <button class="btn btn-danger btn-small ml-1" @click="deleteNote(note._id)">Rejected</button>
+          <td class="d-flex justify-content-center align-items-center">
+            <button class="btn btn-success btn-small" @click="editNote(note)">Completed</button>
+            <button class="btn btn-danger btn-small ml-1" @click="deleteNote(note)">Delete/Reject</button>
           </td>
         </tr>
       </tbody>
@@ -51,11 +51,12 @@
       }
     },
     methods: {
-      deleteNote(id) {
-        this.$store.dispatch('deleteNote', id)
+      deleteNote(note) {
+        this.$store.dispatch('deleteNote', note)
       },
       editNote(note) {
-        this.$store.dispatch('editNote', id)
+        note.flagged = 'completed'
+        this.$store.dispatch('editNote', note)
       }
     }
   }

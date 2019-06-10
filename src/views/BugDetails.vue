@@ -36,7 +36,7 @@
         <button class="btn btn-success" @click="showForm = !showForm" v-if="showForm == false"
           :disabled="bug.closed">Add <i class="far fa-comment"></i></button>
         <button class="btn btn-success" @click="showForm = !showForm" v-else-if="showForm == true"
-          disabled="bug.closed">Cancel <i class="far fa-comment"></i></button>
+          :disabled="bug.closed">Cancel <i class="far fa-comment"></i></button>
       </div>
     </div>
     <div class="row">
