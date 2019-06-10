@@ -27,7 +27,7 @@
           </td>
           <td class="d-flex">
             <button class="btn btn-success btn-small">Completed</button>
-            <button class="btn btn-danger btn-small ml-1" @click="deleteNote">Rejected</button>
+            <button class="btn btn-danger btn-small ml-1" @click="deleteNote(note)">Rejected</button>
           </td>
         </tr>
       </tbody>
@@ -53,6 +53,9 @@
         return this.$store.state.bug
       }
     },
+    method(note) {
+      this.$store.dispatch('deleteNote', note)
+    }
   }
 
 </script>
