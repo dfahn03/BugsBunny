@@ -67,9 +67,15 @@ export default new Vuex.Store({
     },
     async createNote({ commit, dispatch }, payload) {
       try {
-        let res = await _api.post('/bugs' + payload.bug + '/notes', payload)
+        let res = await _api.post('/bugs/' + payload.bug + '/notes', payload)
         dispatch('getNotes', payload.bug)
       } catch (err) { console.error(err) }
     },
+    async deleteNote({ commit, dispatch }, payload) {
+      try {
+        let res = await _api.delete('bugs/' + payload.bug + '/notes/' + payload._id, payload)
+        dispatch('getNotes', payload.bug)
+      } catch (e) { console.error(e) }
+    }
   }
 })

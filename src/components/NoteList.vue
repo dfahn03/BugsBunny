@@ -27,7 +27,7 @@
           </td>
           <td class="d-flex">
             <button class="btn btn-success btn-small">Completed</button>
-            <button class="btn btn-danger btn-small ml-1">Rejected</button>
+            <button class="btn btn-danger btn-small ml-1" @click="deleteNote">Rejected</button>
           </td>
         </tr>
       </tbody>
@@ -40,9 +40,7 @@
   export default {
     name: "NoteList",
     data() {
-      return {
-        bug: this.id
-      }
+      return {}
     },
     mounted() {
       this.$store.dispatch('getNotes')
