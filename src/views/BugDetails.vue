@@ -35,8 +35,8 @@
       <div class="col-12 mt-3 mb-3 d-flex justify-content-center align-items-center" v-show="bug.closed == false">
         <button class="btn btn-success" @click="showForm = !showForm" v-if="showForm == false"
           :disabled="bug.closed">Add <i class="far fa-comment"></i></button>
-        <button class="btn btn-success" @click="showForm = !showForm" v-else-if="showForm == true">Cancel <i
-            class="far fa-comment"></i></button>
+        <button class="btn btn-success" @click="showForm = !showForm" v-else-if="showForm == true"
+          disabled="bug.closed">Cancel <i class="far fa-comment"></i></button>
       </div>
     </div>
     <div class="row">

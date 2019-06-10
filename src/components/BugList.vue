@@ -22,7 +22,7 @@
           </tr>
         </tbody>
       </table>
-      <div>
+      <!-- <div>
         <ul class="pagination pagination-sm">
           <li class="page-item disabled">
             <a class="page-link" href="#">&laquo;</a>
@@ -46,7 +46,7 @@
             <a class="page-link" href="#">&raquo;</a>
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

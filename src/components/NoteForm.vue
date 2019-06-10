@@ -1,6 +1,6 @@
 <template>
   <div class="col-12 note-form d-flex justify-content-center align-items-center">
-    <form>
+    <form @submit="createNote">
       <div class="form-group">
         <input class="form-control form-control-sm m-1" type="text" placeholder="Who Might You Be?" v-model="creator">
         <input class="form-control form-control-lg m-1" type="text" placeholder="Note" v-model="content">
@@ -22,16 +22,18 @@
         bug: this.$route.params.id
       }
     },
-    createNote() {
-      let newNote = {
-        creator: this.creator,
-        content: this.content,
-        flagged: "pending",
-        bug: this.$route.params.id
-      };
-      this.$store.dispatch('createNote', newNote)
-      this.creator = "",
-        this.content = ""
+    methods: {
+      createNote() {
+        let newNote = {
+          creator: this.creator,
+          content: this.content,
+          flagged: "pending",
+          bug: this.$route.params.id
+        };
+        this.$store.dispatch('createNote', newNote)
+        this.creator = "",
+          this.content = ""
+      }
     }
   }
 </script>
