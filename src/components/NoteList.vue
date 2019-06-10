@@ -42,9 +42,6 @@
     data() {
       return {}
     },
-    mounted() {
-      this.$store.dispatch('getNotes')
-    },
     computed: {
       notes() {
         return this.$store.state.notes

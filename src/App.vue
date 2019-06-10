@@ -15,7 +15,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
+    min-width: 100vw;
   }
 
   #nav {
