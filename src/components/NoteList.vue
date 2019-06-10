@@ -25,7 +25,7 @@
           <td>
             {{new Date(note.updatedAt).toLocaleDateString('en-US', {year: 'numeric', day: 'numeric', month: 'short'})}}
           </td>
-          <td class="d-flex justify-content-center align-items-center">
+          <td class="d-flex justify-content-center align-items-center" v-if="!bug.closed">
             <button class="btn btn-info btn-small ml-1" @click="pendingNote(note)"
               v-if="note.flagged !== 'pending'">Pending</button>
             <button class="btn btn-success btn-small ml-1" @click="completedNote(note)"

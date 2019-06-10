@@ -4,7 +4,7 @@
       <div class="form-group">
         <input class="form-control form-control-sm m-1" type="text" placeholder="Who Might You Be?" v-model="creator">
         <input class="form-control form-control-lg m-1" type="text" placeholder="Note" v-model="content">
-        <button type="submit" class="btn btn-primary mt-1 mb-2">Eh, what's up, doc?</button>
+        <button type="submit" class="btn btn-primary mt-1 mb-2" v-if="!bug.closed">Eh, what's up, doc?</button>
       </div>
     </form>
   </div>
@@ -33,6 +33,11 @@
         this.$store.dispatch('createNote', newNote)
         this.creator = "",
           this.content = ""
+      }
+    },
+    computed: {
+      bug() {
+        return this.$store.state.bug
       }
     }
   }
