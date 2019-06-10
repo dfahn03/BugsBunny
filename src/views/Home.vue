@@ -41,14 +41,6 @@
       BugList,
       BugForm
     },
-    computed: {
-      buglist() {
-        return this.$store.state.bugs
-      }
-    },
-    methods: {
-
-    }
   }
 </script>
 

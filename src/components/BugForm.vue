@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 bug-form  d-flex justify-content-center align-items-center">
+  <div class="col-12 bug-form d-flex justify-content-center align-items-center">
     <form @submit.prevent="createBug">
       <div class="form-group">
         <input class="form-control form-control-sm m-1" type="text" placeholder="Title" v-model="title">
