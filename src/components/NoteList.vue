@@ -26,8 +26,13 @@
             {{new Date(note.updatedAt).toLocaleDateString('en-US', {year: 'numeric', day: 'numeric', month: 'short'})}}
           </td>
           <td class="d-flex justify-content-center align-items-center">
-            <button class="btn btn-success btn-small" @click="editNote(note)">Completed</button>
-            <button class="btn btn-danger btn-small ml-1" @click="deleteNote(note)">Delete/Reject</button>
+            <button class="btn btn-info btn-small ml-1" @click="pendingNote(note)"
+              v-if="note.flagged !== 'pending'">Pending</button>
+            <button class="btn btn-success btn-small ml-1" @click="completedNote(note)"
+              v-if="note.flagged !== 'completed'">Completed</button>
+            <button class="btn btn-warning btn-small ml-1" @click="rejectedNote(note)"
+              v-if="note.flagged !== 'rejected'">Reject</button>
+            <button class="btn btn-danger btn-small ml-1" @click="deleteNote(note)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -54,8 +59,16 @@
       deleteNote(note) {
         this.$store.dispatch('deleteNote', note)
       },
-      editNote(note) {
+      pendingNote(note) {
+        note.flagged = 'pending'
+        this.$store.dispatch('editNote', note)
+      },
+      completedNote(note) {
         note.flagged = 'completed'
+        this.$store.dispatch('editNote', note)
+      },
+      rejectedNote(note) {
+        note.flagged = 'rejected'
         this.$store.dispatch('editNote', note)
       }
     }

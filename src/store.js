@@ -24,6 +24,9 @@ export default new Vuex.Store({
     },
     setNotes(state, data) {
       state.notes = data
+    },
+    setNote(state, data) {
+      state.note = data
     }
   },
   actions: {
@@ -74,8 +77,9 @@ export default new Vuex.Store({
     },
     async deleteNote({ commit, dispatch }, payload) {
       try {
+        // debugger
         let res = await _api.delete('bugs/' + payload.bug + '/notes/' + payload._id, payload)
-        dispatch('getNotes', res.data)
+        commit('setNote', res.data)
       } catch (e) { console.error(e) }
     },
     async editNote({ commit, dispatch }, payload) {
