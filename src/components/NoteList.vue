@@ -1,6 +1,71 @@
 <template>
-  <div class="col-7 note-list">
-    <div class="card text-white bg-light mb-3" v-for="note in notes" :key="note._id">
+  <div class="col note-list">
+    <table class="table table-hover">
+      <thead>
+        <tr class="table-primary bg-title">
+          <th scope="col">Created By</th>
+          <th scope="col">Note</th>
+          <th scope="col">Status</th>
+          <th scope="col">Date Created</th>
+          <th scope="col">Date Updated</th>
+          <th scope="col">Change Status</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-secondary" v-for="note in notes" :key="note._id">
+          <td>{{note.creator}}</td>
+          <td>{{note.content}}</td>
+          <td v-if="note.flagged == 'pending'">Pending</i></td>
+          <td v-else-if="note.flagged == 'completed'">Completed</i></td>
+          <td v-else="note.flagged == 'rejected'">Rejected</i></td>
+          <td>
+            {{new Date(note.createdAt).toLocaleDateString('en-US', {year: 'numeric', day: 'numeric', month: 'short'})}}
+          </td>
+          <td>
+            {{new Date(note.updatedAt).toLocaleDateString('en-US', {year: 'numeric', day: 'numeric', month: 'short'})}}
+          </td>
+          <td class="d-flex">
+            <button class="btn btn-success btn-small">Completed</button>
+            <button class="btn btn-danger btn-small ml-1">Rejected</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<script>
+
+  export default {
+    name: "NoteList",
+    data() {
+      return {
+        bug: this.id
+      }
+    },
+    mounted() {
+      this.$store.dispatch('getNotes')
+    },
+    computed: {
+      notes() {
+        return this.$store.state.notes
+      },
+      bug() {
+        return this.$store.state.bug
+      }
+    },
+  }
+
+</script>
+
+
+<style>
+
+</style>
+
+
+<!-- <div class="card text-white bg-light mb-3" v-for="note in notes" :key="note._id">
       <div class="card-header">{{note.creator}}</div>
       <div class="card-body">
         <h6 class="card-title">{{note.flagged}}</h6>
@@ -21,32 +86,4 @@
       <div class="card-footer text-muted">Created:
         {{new Date(note.createdAt).toLocaleDateString('en-US', {year: 'numeric', day: 'numeric', month: 'short'})}}
       </div>
-    </div>
-  </div>
-</template>
-
-<script>
-
-  export default {
-    name: "NoteList",
-    data() {
-      return {
-        bug: this.id
-      }
-    },
-    mounted() {
-      this.$store.dispatch('getNotes')
-    },
-    computed: {
-      notes() {
-        return this.$store.state.notes
-      }
-    },
-  }
-
-</script>
-
-
-<style>
-
-</style>
+    </div> -->

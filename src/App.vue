@@ -24,7 +24,7 @@
 
   #nav a {
     font-weight: bold;
-    color: #2c3e50;
+    color: orange;
   }
 
   #nav a.router-link-exact-active {
