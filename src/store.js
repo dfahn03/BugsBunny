@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import Axios from 'axios'
 
 let _api = Axios.create({
-  baseURL: "https://bcw-sandbox.herokuapp.com/api/DallinTest"
+  baseURL: "https://bcw-sandbox.herokuapp.com/api/Dallin"
 })
 
 Vue.use(Vuex)
